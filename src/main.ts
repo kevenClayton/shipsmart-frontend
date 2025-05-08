@@ -7,11 +7,10 @@ import { createPinia } from 'pinia'
 import VueMask from '@devindex/vue-mask'; // <-- ADD THIS LINE
 
 import LoginView from '@/pages/login.vue'
-import IndexView from '@/pages/index.vue'
 import ContatoView from '@/pages/contato.vue'
 
 const routes = [
-    { path: '/', component: IndexView },
+    { path: '/', component: ContatoView },
     { path: '/login', component: LoginView },
     { path: '/contatos', component: ContatoView },
 ]

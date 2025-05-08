@@ -13,12 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 
 // Menu items.
-const items = [
-  {
-    title: "Início",
-    url: "#",
-    icon: Home,
-  },
+const items = [  
   {
     title: "Contatos",
     url: "/contatos",

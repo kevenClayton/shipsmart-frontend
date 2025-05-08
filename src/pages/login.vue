@@ -34,7 +34,7 @@ import { Label } from '@/components/ui/label'
         </CardContent>
         <CardFooter>
             <Button class="w-full" as-child>
-                <a href="/">
+                <a href="/contatos">
                     Entrar
                 </a>
             </Button>

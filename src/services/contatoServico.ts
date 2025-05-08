@@ -33,9 +33,8 @@ export const contatoServico = defineStore('contato', {
       this.carregando = true
       this.erro = null
       try {
-        const response = await api.get<Contato[]>('/contatos/indicadores')        
-        this.indicadores = response.data
-
+        const response = await api.get<Contato[]>('/contatos/indicadores')                
+        this.indicadores = response.data;
       } catch (err: any) {
         this.erro = err.message || 'Erro ao buscar contatos.'
       } finally {
@@ -89,6 +88,7 @@ export const contatoServico = defineStore('contato', {
 
     reset() {
       this.contatos = []
+      this.indicadores = []
       this.carregando = false
       this.erro = null
     }

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import CardsContato from "@/components/contato/CardsContato.vue";
 import RegistrosContato from "@/components/contato/RegistrosContato.vue";
 import AppSidebar from "@/components/AppSidebar.vue";
 
@@ -10,8 +9,7 @@ import AppSidebar from "@/components/AppSidebar.vue";
 <template>
   <SidebarProvider>
     <AppSidebar />
-    <SidebarInset>
-      <CardsContato />
+    <SidebarInset>      
       <RegistrosContato />      
     </SidebarInset>
 

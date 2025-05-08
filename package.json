@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@devindex/vue-mask": "^2.0.3",
     "@vueuse/core": "^13.1.0",
     "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",

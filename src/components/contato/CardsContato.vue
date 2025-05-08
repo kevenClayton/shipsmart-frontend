@@ -10,19 +10,24 @@ import {
 } from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
 import { Bell, Check } from 'lucide-vue-next'
-
+const props = defineProps({
+  indicadores: {
+    type: Object as () => any, // Substitua MatriculaType pelo tipo TypeScript correto
+    required: true,
+  }, 
+});
 const notifications = [
   {
     title: 'Contatos com endereço',
-    description: '7',
+    description: props.indicadores.total_com_enderecos,
   },
   {
     title: 'Contatos com telefone',
-    description: '1',
+    description: props.indicadores.total_com_telefone,
   },
   {
     title: 'Total',
-    description: '3',
+    description: props.indicadores.total_contatos,
   },
 ]
 </script>

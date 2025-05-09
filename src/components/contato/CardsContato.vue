@@ -35,7 +35,7 @@ const notifications = [
       <Card v-for="(notification, index) in notifications" :key="index">
         <CardHeader>
           <CardTitle> {{ notification.title }}</CardTitle>
-          <CardDescription> {{ notification.description }}</CardDescription>
+          <CardDescription> {{ notification.description  ?? 0 }}</CardDescription>
         </CardHeader>
       </Card>
     </div>

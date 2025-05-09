@@ -13,7 +13,7 @@ export interface Contato {
   endereco: string
   numero: string
 }
-export interface Indicadores {  
+export interface Indicadores {
   total_contatos: number
   total_com_enderecos: number
   total_com_telefone: number
@@ -33,7 +33,7 @@ export const contatoServico = defineStore('contato', {
       this.carregando = true
       this.erro = null
       try {
-        const response = await api.get<Contato[]>('/contatos/indicadores')                
+        const response = await api.get<Contato[]>('/contatos/indicadores')
         this.indicadores = response.data;
       } catch (err: any) {
         this.erro = err.message || 'Erro ao buscar contatos.'
@@ -45,7 +45,7 @@ export const contatoServico = defineStore('contato', {
       this.carregando = true
       this.erro = null
       try {
-        const response = await api.get<Contato[]>('/contatos')        
+        const response = await api.get<Contato[]>('/contatos')
         this.contatos.splice(0, this.contatos.length, ...response.data)
         this.carregarIndicadores()
       } catch (err: any) {
@@ -94,3 +94,38 @@ export const contatoServico = defineStore('contato', {
     }
   },
 })
+
+export const exportacaoService = {
+  exportarExcel: (data: any) => {
+    return api.get<{ data: any }>(
+      `/exportacao/excel?tipoExportacao=${data}`,
+      { responseType: 'blob' }
+    );
+  }
+}
+
+
+export const botaoExportacao = async (tipoExportacao: any) => {
+  try {
+    const response = await exportacaoService.exportarExcel(tipoExportacao);
+
+    // Cria um URL para o Blob de dados da resposta
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+
+    // Cria um elemento <a> para download
+    const link = document.createElement("a");
+    link.href = url;
+    const dataHoraAtualFormatadaArquivo = new Date().toLocaleString().replace(/[^0-9]/g, "");
+    const nomeArquivo = tipoExportacao+"_"+dataHoraAtualFormatadaArquivo+".xlsx";
+    link.setAttribute("download", nomeArquivo);
+
+    // Adiciona o link ao corpo do documento e dispara o clique
+    document.body.appendChild(link);
+    link.click();
+
+    // Remove o link após o download ser iniciado
+    link.remove();
+  } catch (error) {
+    console.error("Erro ao exportar para Excel:", error);
+  }
+};

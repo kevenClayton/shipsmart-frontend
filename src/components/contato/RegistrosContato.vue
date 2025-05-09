@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { contatoServico } from '@/services/contatoServico.ts'
+import { contatoServico, botaoExportacao } from '@/services/contatoServico.ts'
 import CardsContato from "@/components/contato/CardsContato.vue";
 import { Button } from '@/components/ui/button'
-import { MapPin, MoreVertical, RefreshCcw, UserPlus, Trash } from 'lucide-vue-next'
+import { MapPin, MoreVertical, RefreshCcw, UserPlus, Trash, Download } from 'lucide-vue-next'
 import { Badge } from "@/components/ui/badge"
 import { ref } from 'vue'
 import { watch } from 'vue'
@@ -98,6 +98,13 @@ function confirmarExclusao(contato: any) {
 function removerEndereco(index: number) {
     contato.value.enderecos.splice(index, 1)
 }
+const exportacaoExcel = async () => {
+  try {
+    botaoExportacao("Contato");
+  } catch (error) {
+    console.error("Erro ao exportar para Excel:", error);
+  }
+};
 watch(
     () => contato.value.enderecos.map(e => e.cep),
     async (ceps, prevCeps) => {
@@ -196,6 +203,10 @@ function resetarFormulario() {
         <Button variant="outline" class="mb-4 mx-1" @click="abrirModalCriacao">
             <UserPlus class="w-4 h-4" />
             Adicionar contato
+        </Button>
+        <Button variant="outline" class="mb-4 mx-1" @click="exportacaoExcel">
+            <Download class="w-4 h-4" />
+            Exportar
         </Button>
         <Button variant="outline" size="icon" class="mb-4" @click="store.carregarContatos">
             <RefreshCcw class="w-4 h-4" />

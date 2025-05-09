@@ -73,12 +73,6 @@ src/
 
 ---
 
-## 🧪 Testes
-
-> Os testes principais são realizados no backend (Laravel), mas a estrutura está pronta para testes unitários com `vitest` ou `cypress` se necessário.
-
----
-
 ## 📦 Build
 
 Para gerar o build de produção:
@@ -86,19 +80,3 @@ Para gerar o build de produção:
 ```bash
 npm run build
 ```
-
----
-
-## 👥 Contribuidores
-
-| [<img src="https://avatars.githubusercontent.com/u/000000?v=4" width="80" height="80">](https://github.com/seu-usuario) |  
-|:--:|  
-| [Keven Clayton](https://github.com/seu-usuario)  |
-
-> 💡 Quer contribuir? Sinta-se à vontade para abrir issues ou pull requests!
-
----
-
-## 📄 Licença
-
-Este projeto foi desenvolvido como parte de um desafio técnico. Direitos reservados ao autor.
